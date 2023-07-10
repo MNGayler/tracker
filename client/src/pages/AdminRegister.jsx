@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../images/logo.png";
 import { useState } from "react";
 import axios from "axios";
@@ -10,6 +10,9 @@ const AdminRegister = () => {
     password: "",
   });
 
+  const [err, setError] = useState(null)
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -17,10 +20,10 @@ const AdminRegister = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try{
-    const res = await axios.post("/auth/register", inputs);
-    console.log(res);
+    await axios.post("/auth/register", inputs);
+    navigate("/admin-home");
     }catch(err){
-      console.log(err);
+      setError(err.response.data)
 
     }
   };
@@ -46,7 +49,9 @@ const AdminRegister = () => {
           onChange={handleChange}
         />
         <button onClick={handleSubmit}>Login</button>
-        <p>This is an error!</p>
+        
+        {/* shows an error if applicable */}
+        {err && <p>{err}</p>}
       </form>
     </div>
   );
