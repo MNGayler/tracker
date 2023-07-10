@@ -11,6 +11,8 @@ import Login from "./pages/Login";
 import AdminNavbar from "./components/AdminNavbar";
 import Footer from "./components/Footer";
 import AdminItem from "./pages/AdminItem";
+import UserRegister from "./pages/UserRegister";
+import "./style.scss"
 
 const Layout = () => {
   return (
@@ -25,26 +27,25 @@ const Layout = () => {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout/>,
-      children: [
-        {
-          path: "/admin-home",
-          element: <AdminHome />
-        },
-        {
-          path: "/admin-work",
-          element: <AdminWork />
-        },
-        {
-          path: "/admin-register",
-          element: <AdminRegister />
-        },
-        {
-          path: "/admin-item/:id",
-          element: <AdminItem />
-        },
-        
-      ]
+    element: <Layout />,
+    children: [
+      {
+        path: "/admin-home",
+        element: <AdminHome />,
+      },
+      {
+        path: "/admin-work",
+        element: <AdminWork />,
+      },
+      {
+        path: "/admin-register",
+        element: <AdminRegister />,
+      },
+      {
+        path: "/admin-item/:id",
+        element: <AdminItem />,
+      },
+    ],
   },
   {
     path: "/admin-registration",
@@ -62,12 +63,18 @@ const router = createBrowserRouter([
     path: "/login",
     element: <Login />,
   },
+  {
+    path: "/user-register",
+    element: <UserRegister />,
+  },
 ]);
 
 function App() {
   return (
-    <div className="App">
-      <RouterProvider router={router} />
+    <div className="app">
+      <div className="container">
+        <RouterProvider router={router} />
+      </div>
     </div>
   );
 }
