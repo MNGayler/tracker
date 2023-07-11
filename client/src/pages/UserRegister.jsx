@@ -15,7 +15,7 @@ const AdminRegister = () => {
         <button>Login</button>
         <p>This is an error!</p>
         <span>
-          Have an account? <Link to="/login">Login</Link>
+          Have an account? <Link to="/user-login">Login</Link>
         </span>
       </form>
     </div>

@@ -5,14 +5,16 @@ import {
   Outlet,
 } from "react-router-dom";
 import AdminRegister from "./pages/AdminRegister";
+import AdminLogin from "./pages/AdminLogin";
 import AdminHome from "./pages/AdminHome";
 import AdminWork from "./pages/AdminWork";
-import Login from "./pages/Login";
 import AdminNavbar from "./components/AdminNavbar";
 import Footer from "./components/Footer";
 import AdminItem from "./pages/AdminItem";
 import UserRegister from "./pages/UserRegister";
-import "./style.scss"
+import UserLogin from "./pages/UserLogin";
+
+import "./style.scss";
 
 const Layout = () => {
   return (
@@ -60,8 +62,12 @@ const router = createBrowserRouter([
     element: <AdminHome />,
   },
   {
-    path: "/login",
-    element: <Login />,
+    path: "/admin-login",
+    element: <AdminLogin />,
+  },
+  {
+    path: "/user-login",
+    element: <UserLogin />,
   },
   {
     path: "/user-register",
